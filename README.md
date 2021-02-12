@@ -90,6 +90,22 @@ palette_coolors(palette_num = 336, hex = TRUE)
 #> [1] "#4f6d7a" "#c0d6df" "#dbe9ee" "#4a6fa5" "#166088"
 ```
 
+## A fun plot
+
+``` r
+library(ggplot2)
+library(palmerpenguins)
+
+pal <- palette_coolors(palette_num = 123, hex = TRUE)
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  geom_point() + 
+  scale_color_manual(values = pal) +
+  theme_bw()
+```
+
+![](man/figures/README-unnamed-chunk-4-1.png)<!-- -->
+
 ## Notes
 
 All color palettes courtesy of [coolors.co](https://coolors.co) and its

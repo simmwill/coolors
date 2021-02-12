@@ -6,8 +6,7 @@ output: github_document
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
-  fig.height = 1
+  fig.path = "man/figures/README-"
 )
 ```
 
@@ -29,12 +28,10 @@ This simple package has two functions: generate a **coolors** color palette (ran
 
 ```{r, include = FALSE}
 set.seed(12)
-#5
-#8
 ```
 
 
-```{r example}
+```{r example, fig.height=1}
 library(coolors)
 
 # generate a few random coolors palettes
@@ -51,7 +48,7 @@ We can also use `palette_coolors(n = #)` to generate a palette shorter or longer
 
 Let's use one of the palettes we generated above and confirmed using `coolors_history()`: palette `336`. We can specify this identifier in the `palette_num` argument.
 
-```{r example2}
+```{r example2, fig.height=1}
 # 100-color palette (nearly a gradient)
 palette_coolors(palette_num = 336, n = 100)
 # 2-color palette (chooses the first two colors)
@@ -64,6 +61,21 @@ Finally, if we just want the hex codes for a palette, we can use `hex = TRUE`.
 # generate hex codes for palette 336
 palette_coolors(palette_num = 336, hex = TRUE)
 
+```
+
+## A fun plot
+
+```{r, warning=FALSE, message=FALSE}
+library(ggplot2)
+library(palmerpenguins)
+
+pal <- palette_coolors(palette_num = 123, hex = TRUE)
+
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm, color = species)) + 
+  geom_point() + 
+  scale_color_manual(values = pal) +
+  theme_bw()
+  
 ```
 
 
