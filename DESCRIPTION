@@ -5,8 +5,7 @@ Authors@R:
     person(given = "Will",
            family = "Simmons",
            role = c("aut", "cre"),
-           email = "simm.will@gmail.com",
-           comment = c(ORCID = "0000-0003-4120-1063"))
+           email = "simm.will@gmail.com")
 Description: Generates palettes using the default palettes from coolors.co. 
 License: MIT + file LICENSE
 Encoding: UTF-8

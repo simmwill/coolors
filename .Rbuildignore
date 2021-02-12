@@ -4,3 +4,4 @@
 ^LICENSE\.md$
 ^hide$
 ^data-raw$
+^README\.Rmd$

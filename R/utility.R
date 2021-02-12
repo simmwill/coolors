@@ -1,9 +1,5 @@
 .coolors_env <- new.env()
 
-#' Set hidden variable
-#'
-#' @param var Hidden variable to set
-#'
 coolors_set <- function(var) {
   varname <- deparse(substitute(var))
   if (exists(varname, envir = parent.frame())) {
@@ -13,10 +9,6 @@ coolors_set <- function(var) {
   }
 }
 
-#' Get hidden variable
-#'
-#' @param var Hidden variable to get
-#'
 coolors_get <- function(var) {
   varname <- deparse(substitute(var))
   .coolors_env[[varname]]
