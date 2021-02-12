@@ -6,6 +6,7 @@
 #'   existing Coolors palettes using an integer between 1 and 2092.
 #' @param n integer; desired length of palette. Default length 5. Lengths greater than 5 will use color interpolation to
 #'   create palette from original 5-color palette.
+#' @param hex logical; TRUE provides a character vector of hex codes.
 #' @param hist logical; indicates whether an object storing palette history is created/updated for the current session. Since this
 #'   function's default color generation scheme is random, this  allows the user to review recently-generated palettes via their
 #'   identifiers, stored in a list. The most recent palette will be list item 1, the second-most recent list item 2, etc.
@@ -24,7 +25,7 @@
 #' palette_coolors(palette_num = 1234, n = 20)
 #'
 
-palette_coolors <- function(palette_num, n, hist = TRUE) {
+palette_coolors <- function(palette_num, n, hex = FALSE, hist = TRUE) {
 
   if(missing(palette_num)) palette_num <- sample(seq_along(coolors), 1)
 
@@ -56,7 +57,12 @@ palette_coolors <- function(palette_num, n, hist = TRUE) {
 
   }
 
-  structure(out, class = "palette", name = paste("Coolors palette", palette_num))
+  if(hex){
+    message(paste0("Coolors palette ", palette_num))
+    out
+  } else{
+    structure(out, class = "palette", name = paste("Coolors palette", palette_num))
+  }
 
 }
 

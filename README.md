@@ -80,6 +80,16 @@ palette_coolors(palette_num = 336, n = 2)
 
 ![](man/figures/README-example2-2.png)<!-- -->
 
+Finally, if we just want the hex codes for a palette, we can use `hex =
+TRUE`.
+
+``` r
+# generate hex codes for palette 336
+palette_coolors(palette_num = 336, hex = TRUE)
+#> Coolors palette 336
+#> [1] "#4f6d7a" "#c0d6df" "#dbe9ee" "#4a6fa5" "#166088"
+```
+
 ## Notes
 
 All color palettes courtesy of [coolors.co](https://coolors.co) and its

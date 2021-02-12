@@ -58,6 +58,14 @@ palette_coolors(palette_num = 336, n = 100)
 palette_coolors(palette_num = 336, n = 2)
 ```
 
+Finally, if we just want the hex codes for a palette, we can use `hex = TRUE`.
+
+```{r}
+# generate hex codes for palette 336
+palette_coolors(palette_num = 336, hex = TRUE)
+
+```
+
 
 ## Notes
 
