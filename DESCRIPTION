@@ -1,0 +1,17 @@
+Package: coolors
+Title: Generate palettes from coolors.co
+Version: 0.1.0
+Authors@R: 
+    person(given = "Will",
+           family = "Simmons",
+           role = c("aut", "cre"),
+           email = "simm.will@gmail.com",
+           comment = c(ORCID = "0000-0003-4120-1063"))
+Description: Generates palettes using the default palettes from coolors.co. 
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.1
+Depends: 
+    R (>= 2.10)
