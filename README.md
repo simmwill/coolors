@@ -82,5 +82,7 @@ palette_coolors(palette_num = 336, n = 2)
 
 ## Notes
 
-`coolors` draws inspiration from several wonderful color palette
-packages, including `wesanderson`.
+All color palettes courtesy of [coolors.co](https://coolors.co) and its
+creator, [Fabrizio Bianchi](http://fabrizio.io/). This package also
+draws inspiration from several wonderful color palette packages,
+including `wesanderson`.
