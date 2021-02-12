@@ -1,10 +1,10 @@
 
 # coolors
 
-Do you need a quick color palette for a plot or map in R?
+Need a quick color palette for a plot or map in R?
 
-I use [coolors.co](https://coolors.co) multiple times a day for color
-palettes. With how often I was visiting the site and exporting hex
+I use [coolors.co](https://coolors.co) multiple times a day to find
+color palettes. With how often I was visiting the site and exporting hex
 codes, I finally got around to writing this package containing a handful
 (currently \~2,000) of the site’s five-color palettes.
 
