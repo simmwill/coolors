@@ -3,3 +3,6 @@
 ^to_do\.txt$
 ^LICENSE\.md$
 ^README\.Rmd$
+
+^dev$
+^data-raw$
