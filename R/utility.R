@@ -1,3 +1,4 @@
+# coolors_history() helpers
 .coolors_env <- new.env()
 
 coolors_set <- function(var) {
@@ -5,7 +6,7 @@ coolors_set <- function(var) {
   if (exists(varname, envir = parent.frame())) {
     assign(deparse(substitute(var)), var, envir = .coolors_env)}
   else {
-    stop(paste(varname,"doesn't exist"))
+    stop(paste(varname, "doesn't exist."))
   }
 }
 
