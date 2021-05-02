@@ -2,6 +2,9 @@
 #'
 #' @param ask boolean; defaults to TRUE. Confirms deletion of coolors history if TRUE.
 #'
+#' @return Function intended for side-effects only.
+#' @export
+#'
 clear_coolors_history <- function(ask = TRUE){
 
   clear_hist <- function() {

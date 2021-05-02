@@ -50,7 +50,7 @@ palette_coolors <- function(palette_num, n, hex = FALSE, hist = TRUE) {
 
   if(hist) {
 
-    coolors_hist <- as.list(c(palette_num, unlist(lapply(coolors_get(coolors_hist), unname))))
+    coolors_hist <- purrr::prepend(lapply(coolors_get(coolors_hist), unname), list(palette_num))
     names(coolors_hist) <- NULL
     names(coolors_hist[[1]]) <- "Most recent: "
     coolors_set(coolors_hist)
@@ -60,7 +60,7 @@ palette_coolors <- function(palette_num, n, hex = FALSE, hist = TRUE) {
   if(hex){
     message(paste0("Coolors palette ", palette_num))
     out
-  } else{
+  } else {
     structure(out, class = "palette", name = paste("Coolors palette", palette_num))
   }
 
@@ -70,15 +70,19 @@ palette_coolors <- function(palette_num, n, hex = FALSE, hist = TRUE) {
 #' @importFrom graphics rect par image text
 print.palette <- function(x, ...) {
 
+  wantfont <- system.file("extdata", "NanumGothic-Regular.ttf", package = "coolors")
+  sysfonts::font_add(family = "NanumGothic", regular = wantfont)
+
   n <- length(x)
   old <- par(mar = c(0.5, 0.5, 0.5, 0.5))
   on.exit(par(old))
 
-  image(1:n, 1, as.matrix(1:n), col = x,
-        ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+  showtext::showtext_auto()
 
-  rect(0, 0.9, n + 1, 1.1, col = grDevices::rgb(1, 1, 1, 0.8), border = NA)
-  text((n + 1) / 2, 1, labels = attr(x, "name"), cex = 1, family = "serif")
+  image(1:n, 1, as.matrix(1:n), col = x, ylab = "", xaxt = "n", yaxt = "n", bty = "n")
+
+  rect(0, 0.9, n + 1, 1.1, col = grDevices::rgb(1, 1, 1, 0.5), border = NA)
+  text((n + 1) / 2, 1, labels = attr(x, "name"), cex = 0.9, family = "NanumGothic")
 
   invisible(x)
 

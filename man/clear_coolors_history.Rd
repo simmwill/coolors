@@ -9,6 +9,9 @@ clear_coolors_history(ask = TRUE)
 \arguments{
 \item{ask}{boolean; defaults to TRUE. Confirms deletion of coolors history if TRUE.}
 }
+\value{
+Function intended for side-effects only.
+}
 \description{
 Clear coolors history from current session
 }

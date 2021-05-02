@@ -17,6 +17,9 @@ Depends:
 Imports:
   rlang,
   stringr,
-  purrr
+  purrr,
+  stats,
+  sysfonts,
+  showtext
 URL: https://github.com/simmwill/coolors
 BugReports: https://github.com/simmwill/coolors/issues

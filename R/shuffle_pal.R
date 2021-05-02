@@ -11,6 +11,10 @@
 #' @export
 #'
 #' @examples
+#' # shuffle a known color palette, keeping colors 2:3
+#' library(magrittr)
+#' palette_coolors(palette_num = 123) %>% shuffle_pal(freeze = 2:3)
+#'
 #' @importFrom rlang .data
 shuffle_pal <- function(palette = .data,
                         freeze,
@@ -21,46 +25,40 @@ shuffle_pal <- function(palette = .data,
     if(!all(valid_hex(palette))){
       stop("At least one hex provided is invalid. See ?coolors::valid_hex for details.")
     }
-    hex <- as.character(palette)
-    palette_num <- which(sapply(coolors, identical, hex))
+    hexcodes <- as.character(palette)
+    palette_num <- which(sapply(coolors, identical, hexcodes))
   }
   else if(is.double(palette)){
-    hex <- palette_coolors(palette_num = palette, hex = TRUE, hist = FALSE)
+    hexcodes <- palette_coolors(palette_num = palette, hex = TRUE, hist = FALSE)
     palette_num <- palette
   } else {
     stop("Palette provided must be a color palette, or a length-1 double vector specifying a coolors palette number.")
   }
 
-  n <- length(hex)
-  if(length(freeze) > n) stop("Length of freeze must be less than or equal to length of palette.")
+  n <- length(hexcodes)
+  if(length(freeze) >= n) stop("Length of freeze must be less than length of palette.")
+  if(any(freeze > n)) stop("At least one freeze position specified is out of bounds.")
 
-  hex_mod <- as.list(hex)  # list faster (modifying uses internal C code)
-  no_freeze_ind <- setdiff(seq_along(hex), freeze)
-
-  # set.seed(palette_num)
+  hexcodes_mod <- hexcodes
+  no_freeze_ind <- setdiff(seq_along(hexcodes), freeze)
 
   for(i in no_freeze_ind){
 
-    # set.seed(palette_num)
-
     samp <- sample(unlist(coolors), size = 1)
 
-    hex_mod[[i]] <- samp
+    hexcodes_mod[[i]] <- samp
 
   }
 
   if(hist){
 
-#' @importFrom purrr prepend
-    coolors_hist <- prepend(coolors_get(coolors_hist), list(as.character(hex_mod)))
-    names(coolors_hist) <- NULL
+    coolors_hist <- purrr::prepend(lapply(coolors_get(coolors_hist), unname), list(hexcodes_mod))
     coolors_set(coolors_hist)
 
   }
 
-  hex_mod <- as.character(hex_mod)
-  print.palette(hex_mod)
+  print.palette(stats::setNames(hexcodes_mod, "Custom palette"))
   message("Positions shuffled: ", paste(no_freeze_ind, collapse = ", "))
-  return(hex_mod)
+  invisible(hexcodes_mod)
 
 }
