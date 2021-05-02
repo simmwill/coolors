@@ -4,10 +4,16 @@
 \alias{valid_hex}
 \title{Test whether a string is a valid hexadecimal color value}
 \usage{
-valid_hex(hex)
+valid_hex(hex, hash = TRUE)
 }
 \arguments{
 \item{hex}{character vector containing string(s) to test as hex value(s).}
+
+\item{hash}{boolean, default TRUE; indicates whether \code{valid_hex()} should verify whether hex codes begin
+with the hash symbol (#). If FALSE, hex codes are considered valid whether or not they begin with the hash
+symbol. Defaults to true because internal print functions require hashed hex codes. This option is provided
+in case this function can serve other uses, e.g. checking if a character vector contains any valid hex
+strings (with or without the hex symbol).}
 }
 \value{
 vector of boolean values indicating whether string(s) are valid hex code.
@@ -18,10 +24,15 @@ Test whether a string is a valid hexadecimal color value
 \details{
 A hex code is valid if:
 \itemize{
-\item It begins with '#' (can set \code{hash = FALSE} if needed), and
+\item It begins with '#' (can set \code{hash = FALSE} if needed, see below), and
 \item It is three, six, or eight characters long, consisting of the characters 0-9, A-F, and/or a-f.
 }
 
 Three-character hex codes are interpolated to six-character codes by repeating each element twice. Eight-
 character hex codes contain two digits (either prepended or appended) representing transparency (alpha).
+}
+\examples{
+valid_hex("#ffffff")
+valid_hex("123456", hash = FALSE)
+
 }

@@ -22,3 +22,9 @@ A vector of hexadecimal color values.
 \description{
 Randomly shuffle part or all of a color palette
 }
+\examples{
+# shuffle a known color palette, keeping colors 2:3
+library(magrittr)
+palette_coolors(palette_num = 123) \%>\% shuffle_pal(freeze = 2:3)
+
+}
