@@ -1,9 +1,9 @@
 
 # coolors
 
-Need a quick
-**<span style="color: #f3c98b;">c</span><span style="color: #7a93ac;">o</span><span style="color: #3f6634;">l</span><span style="color: #dc9e82;">o</span><span style="color: #c16e70;">r</span>**
-palette for a plot or map in R?
+Need a quick color palette for a plot or map in R?
+
+<!-- **<span style="color: #f3c98b;">c</span><span style="color: #7a93ac;">o</span><span style="color: #3f6634;">l</span><span style="color: #dc9e82;">o</span><span style="color: #c16e70;">r</span>** -->
 
 <!-- 462255 -->
 
@@ -154,14 +154,13 @@ palette_coolors(palette_num = 336)
 ![](man/figures/README-orig_pal-1.png)<!-- -->
 
 I like this palette, but it’d be nice to replace the third color with
-another color. To do this, I’ll pipe palette 450 to `shuffle_pal()`,
-using the `freeze` argument to keep all colors that I like (in this
-case, all color positions except for 3).
+another color. To do this, I’ll first call the base palette, 336. Then,
+I’ll pipe the result to `shuffle_pal()`, using the `freeze` argument to
+keep the colors that I like.
 
 ``` r
 library(magrittr)
 
-# shuffled palette
 palette_coolors(palette_num = 336) %>% 
   shuffle_pal(freeze = c(1:2, 4:5))           # I want to keep colors 1, 2, 4, 5
 #> Positions shuffled: 3
