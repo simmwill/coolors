@@ -38,12 +38,14 @@ devtools::install_github("simmwill/coolors")
 
 ## Basic usage
 
-There are two basic functions that make this package useful:
+There are three functions that make this package useful:
 
   - `palette_coolors()` generates a color palette (choosing a random
     base palette by default)
   - `coolors_history()` recalls the current session’s history of
     generated palettes
+  - `shuffle_pal()` allows you to change specific colors in a generated
+    palette
 
 Let’s test them out\! First, we’ll generate some random color palettes
 using repeated calls to `palette_coolors()`.
