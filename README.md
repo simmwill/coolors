@@ -52,9 +52,6 @@ There are three functions that make this package useful:
   - `shuffle_pal()` allows you to change specific colors in a generated
     palette
 
-Another function, `shuffle_pal()`, allows further customization of
-palettes, which we’ll discuss below.
-
 Let’s test them out\! First, we’ll generate some random color palettes
 using repeated calls to `palette_coolors()`.
 
