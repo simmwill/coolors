@@ -70,14 +70,9 @@ palette_coolors <- function(palette_num, n, hex = FALSE, hist = TRUE) {
 #' @importFrom graphics rect par image text
 print.palette <- function(x, ...) {
 
-  # wantfont <- system.file("extdata", "NanumGothic-Regular.ttf", package = "coolors")
-  # sysfonts::font_add(family = "NanumGothic", regular = wantfont)
-
   n <- length(x)
   old <- par(mar = c(0.5, 0.5, 0.5, 0.5))
   on.exit(par(old))
-
-  # showtext::showtext_auto()
 
   image(1:n, 1, as.matrix(1:n), col = x, ylab = "", xaxt = "n", yaxt = "n", bty = "n")
 

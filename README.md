@@ -16,11 +16,14 @@ Need a quick color palette for a plot or map in R?
 <!-- 70c1b3 -->
 
 I use [coolors.co](https://coolors.co) multiple times a day to find
-color palettes. With how often I was visiting the site and exporting hex
-codes, I finally got around to writing this package mirroring some of
-the site’s functionality.
+color palettes. It’s well-built, easy-to-use, and produces beautiful
+palettes. Still, it’s sometimes easier to integrate palette-building
+within my R workflow, rather than copying and pasting from a web
+browser; thus, this package was born.
 
-Why use `coolors`?
+<!-- With how often I was visiting the site and exporting hex codes, I finally got around to writing this package mirroring some of the site's functionality.  -->
+
+So, why use `coolors`?
 
   - Contains \~2,000 beautiful five-color base palettes, sourced from
     [coolors.co](https://coolors.co)
@@ -30,6 +33,8 @@ Why use `coolors`?
     palettes until you find one you like\!
 
 ## Installation
+
+You can install the development version of this package from GitHub.
 
 ``` r
 # install.packages("devtools")
@@ -44,6 +49,9 @@ There are two basic functions that make this package useful:
     base palette by default)
   - `coolors_history()` recalls the current session’s history of
     generated palettes
+
+Another function, `shuffle_pal()`, allows further customization of
+palettes, which we’ll discuss below.
 
 Let’s test them out\! First, we’ll generate some random color palettes
 using repeated calls to `palette_coolors()`.
@@ -69,7 +77,7 @@ palette_coolors()
 
 ![](man/figures/README-palette_coolors-3.png)<!-- -->
 
-## Other features
+## Features
 
 ### Palette history
 
@@ -138,7 +146,7 @@ palette_coolors(palette_num = 336, hex = TRUE)
 #> [1] "#4f6d7a" "#c0d6df" "#dbe9ee" "#4a6fa5" "#166088"
 ```
 
-## Custom randomization with `shuffle_pal()`
+### Custom randomization with `shuffle_pal()`
 
 Let’s say we find a palette that we really love…except for one of the
 colors. Wouldn’t it be nice to randomize that one color while the others
@@ -190,9 +198,9 @@ palette_coolors(palette_num = 123, n = 7) %>%
 
 ### Iterative randomization
 
-Finally, a complex situation that’s surprisingly common the more I use
-this package. Let’s say *from the already-shuffled palette above*, I now
-only want to change the first color.
+Finally, a more complex use-case that’s surprisingly common the more I
+use this package. Let’s say *from the already-shuffled palette above*, I
+now only want to change the first color.
 
 What if I just change the second line of code to `shuffle_pal(freeze =
 c(2:7))` and rerun it? Unfortunately, this will leave me frustrated.
